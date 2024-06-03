@@ -1,0 +1,26 @@
+id,tipo,nombre,fechaNacimiento,pais,ranking,ganancias
+1,tenista,Natasha Lucas,1986-11-05,Kuwait,685,27711.90
+2,tenista,Tammy Wells,1998-05-06,American Samoa,598,24643.81
+3,tenista,Jennifer Mitchell,1989-10-12,Ethiopia,852,74731.81
+4,tenista,Craig Herman,1998-05-12,Montenegro,84,53866.57
+5,tenista,Cody Williams,1995-01-28,Togo,723,63012.39
+6,tenista,Mark Palmer,1996-02-20,Uzbekistan,419,54876.68
+7,tenista,Julia Peterson,1982-08-15,New Zealand,953,52946.24
+8,tenista,Randy Morris,1994-07-10,Norway,214,84754.38
+9,tenista,Lisa Anderson,1990-01-24,Palestine,636,31378.85
+10,tenista,Steve Scott,1985-09-07,Belarus,791,95834.25
+11,tenista,Laura Bryant,1988-05-29,Mali,316,65234.15
+12,tenista,Patrick Kelly,1986-02-11,Zambia,481,53248.29
+13,tenista,Nicholas Smith,1991-12-03,Greece,194,35862.47
+14,tenista,Johnathan Owens,1999-04-18,Chile,105,46832.15
+15,tenista,Christina Wright,1993-11-09,South Korea,609,78219.34
+16,tenista,Ryan Stewart,1983-06-12,Malta,345,49682.10
+17,tenista,Kimberly Edwards,1984-03-22,Belgium,731,12468.89
+18,tenista,Scott Ward,1987-07-04,India,976,68935.46
+19,tenista,Emily Martinez,1992-08-28,United States,501,84715.23
+20,tenista,Amy Moore,1995-05-14,Iceland,62,72458.34
+21,entrenador,George Hall,1970-02-14,United States,,
+22,entrenador,Mary Clark,1965-09-09,Canada,,
+23,entrenador,Peter Walker,1978-07-21,Australia,,
+24,entrenador,Linda Turner,1969-04-02,United Kingdom,,
+25,entrenador,James Wright,1972-11-12,South Africa,,

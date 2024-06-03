@@ -1,0 +1,80 @@
+CREATE TABLE EntrenadorEntity(
+    id INTEGER PRIMARY KEY NOT NULL,
+    nombre TEXT NOT NULL,
+    fechaNacimiento TEXT NOT NULL,
+    pais TEXT NOT NULL
+);
+
+deleteAllEntrenador:
+DELETE FROM EntrenadorEntity;
+
+selectAllEntrenador:
+SELECT * FROM EntrenadorEntity;
+
+selectEntrenadorById:
+SELECT * FROM EntrenadorEntity WHERE id = ?;
+
+selectByPais:
+SELECT * FROM EntrenadorEntity WHERE pais = ?;
+
+updateEntrenador:
+UPDATE EntrenadorEntity SET nombre=?, fechaNacimiento=?,pais=? WHERE id=?;
+
+selectEntrenadorByNombre:
+SELECT * FROM EntrenadorEntity WHERE nombre = ?;
+
+insertEntrenador:
+INSERT INTO EntrenadorEntity(id,nombre,fechaNacimiento,pais)
+VALUES(?,?,?,?);
+
+CREATE TABLE TenistaEntity(
+    id INTEGER PRIMARY KEY NOT NULL,
+    nombre TEXT NOT NULL,
+    fechaNacimiento TEXT NOT NULL,
+    pais TEXT NOT NULL,
+    ranking INTEGER NOT NULL,
+    ganancias REAL NOT NULL
+);
+
+deleteAllTenista:
+DELETE FROM TenistaEntity;
+
+selectAllTenista:
+SELECT * FROM TenistaEntity;
+
+selectTenistaById:
+SELECT * FROM TenistaEntity WHERE id = ?;
+
+updateTenista:
+UPDATE TenistaEntity SET nombre=?, fechaNacimiento=? ,pais=?, ranking=?, ganancias=? WHERE id=?;
+
+deleteById:
+DELETE FROM TenistaEntity WHERE id =?;
+
+selectByRanking:
+SELECT * FROM TenistaEntity WHERE ranking = ?;
+
+selectTenistaByNombre:
+SELECT * FROM TenistaEntity WHERE nombre = ?;
+
+insertTenista:
+INSERT INTO TenistaEntity(id,nombre,fechaNacimiento,pais,ranking,ganancias)
+VALUES(?,?,?,?,?,?);
+
+obtenerTenistaConMasRango:
+SELECT * FROM TenistaEntity WHERE ranking = (SELECT MAX(ranking) FROM TenistaEntity);
+
+obtenerGananciaMediaPorPaises:
+SELECT AVG(ganancias)FROM TenistaEntity GROUP BY pais;
+
+paisConMasJugadoresActivo:
+SELECT pais, COUNT(*) AS num_jugadores FROM TenistaEntity GROUP BY pais ORDER BY num_jugadores DESC;
+
+sumaGananciasAgrupadasPais:
+SELECT SUM(ganancias) FROM TenistaEntity GROUP BY pais;
+
+
+
+
+
+
