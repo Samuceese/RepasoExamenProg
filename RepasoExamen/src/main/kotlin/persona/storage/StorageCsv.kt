@@ -18,25 +18,25 @@ class StorageCsv : Storage {
         logger.debug { "Cargando el fichero $file" }
         return try {
             Ok(
-                file.readLines().drop(1).map { it.split(",") }.map { data ->
+                file.readLines().drop(1).map { it.split(",") }.map {
 
-                   when(data[1]){
+                   when(it[1]){
                        "tenista" ->{
                            Tenista(
-                               id = data[0].toInt(),
-                               nombre = data[2],
-                               fechaNacimiento = data[3].returnDateTimeString(),
-                               pais = data[4],
-                               ranking = data[5].toInt(),
-                               ganancias = data[6].toDouble()
+                               id = it[0].toInt(),
+                               nombre = it[2],
+                               fechaNacimiento = it[3].returnDateTimeString(),
+                               pais = it[4],
+                               ranking = it[5].toInt(),
+                               ganancias = it[6].toDouble()
                            )
                        }
                        "entrenador" ->{
                            Entrenador(
-                               id = data[0].toInt(),
-                               nombre = data[2],
-                               fechaNacimiento = data[3].returnDateTimeString(),
-                               pais = data[4],
+                               id = it[0].toInt(),
+                               nombre = it[2],
+                               fechaNacimiento = it[3].returnDateTimeString(),
+                               pais = it[4],
                            )
                        }
                        else -> throw Exception("Tipo no detectado maricón")

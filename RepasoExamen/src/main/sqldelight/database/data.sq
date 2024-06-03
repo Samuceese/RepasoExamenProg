@@ -1,4 +1,4 @@
-CREATE TABLE EntrenadorEntity(
+CREATE TABLE IF NOT EXISTS EntrenadorEntity(
     id INTEGER PRIMARY KEY NOT NULL,
     nombre TEXT NOT NULL,
     fechaNacimiento TEXT NOT NULL,
@@ -30,7 +30,7 @@ insertEntrenador:
 INSERT INTO EntrenadorEntity(id,nombre,fechaNacimiento,pais)
 VALUES(?,?,?,?);
 
-CREATE TABLE TenistaEntity(
+CREATE TABLE IF NOT EXISTS TenistaEntity(
     id INTEGER PRIMARY KEY NOT NULL,
     nombre TEXT NOT NULL,
     fechaNacimiento TEXT NOT NULL,

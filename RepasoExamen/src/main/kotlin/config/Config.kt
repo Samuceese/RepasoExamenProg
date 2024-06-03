@@ -48,7 +48,7 @@ object Config {
     }
 
     val removeDatabase: Boolean by lazy {
-        readProperty("database.removedata")?.toBoolean() ?: false
+        readProperty("database.removedata")?.toBoolean() ?: true
     }
 
 

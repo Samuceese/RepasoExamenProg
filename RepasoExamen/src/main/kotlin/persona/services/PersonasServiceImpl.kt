@@ -1,13 +1,13 @@
 package persona.services
 
-import cache.Cache
 import cache.CachePersonasImpl
 import com.github.michaelbull.result.*
 import org.lighthousegames.logging.logging
 import persona.errors.PersonaError
 import persona.models.Persona
 import persona.repositories.PersonaRepository
-import persona.storage.Storage
+import persona.storage.StorageCsv
+import persona.storage.StorageJson
 import java.io.File
 
 private val logger = logging()
@@ -15,7 +15,8 @@ private val logger = logging()
 class PersonasServiceImpl(
     private val repository: PersonaRepository,
     private val cache: CachePersonasImpl,
-    private val storage: Storage
+    private val storageCsv: StorageCsv,
+    private val storageJson: StorageJson
 ):PersonasService {
 
     override fun getAll(): Result<List<Persona>, PersonaError> {
@@ -56,17 +57,33 @@ class PersonasServiceImpl(
             ?: Err(PersonaError.PersonaErrorValida("Persona no eliminada por id $id"))
     }
 
-    override fun load(file: File): Result<List<Persona>, PersonaError> {
+    override fun loadJson(file: File): Result<List<Persona>, PersonaError> {
         logger.debug { "Cargando fichero $file" }
-        return storage.load(file)
+        return storageJson.load(file)
             .onSuccess {
                 it.forEach { repository.save(it) }
                 Ok(it)
             }
     }
 
-    override fun store(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
-        logger.debug { "Salvando" }
-        return storage.store(file, listPersonas)
+    override fun storeJson(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
+        logger.debug { "Salvando en json" }
+        return storageJson.store(file, listPersonas)
     }
+
+    override fun loadCsv(file: File): Result<List<Persona>, PersonaError> {
+        logger.debug { "Cargando fichero" }
+        return storageCsv.load(file)
+            .onSuccess {
+                it.forEach { repository.save(it) }
+                Ok(it)
+            }
+    }
+
+    override fun storeCsv(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
+        logger.debug { "Salvando en csv" }
+        return storageCsv.store(file, listPersonas)
+    }
+
+
 }

@@ -19,7 +19,7 @@ class StorageJson : Storage {
     override fun load(file: File): Result<List<Persona>, PersonaError> {
         logger.debug { "Leyendo el fichero: $file" }
         return try {
-            val json = Json { ignoreUnknownKeys = true }
+            val json = Json { ignoreUnknownKeys = true}
             Ok(json.decodeFromString<List<PersonaDto>>(file.readText()).map { it.toPersona() })
         }catch (e:Exception){
             logger.error { "Error al leer el fichero ${e.message}" }
@@ -31,16 +31,17 @@ class StorageJson : Storage {
         logger.debug { "Guardando el fichero: $file" }
         return try {
             val json = Json {
-                ignoreUnknownKeys= true;
-                prettyPrint = true}
-            Ok(
-                file.writeText(
-                    Json.encodeToString<List<PersonaDto>>(listPersonas.map { it.toPersonaDto() })
-                )
-            )
-        }catch (e:Exception){
-            logger.error { "Error al escribir" }
+                ignoreUnknownKeys = true
+                prettyPrint = true
+                explicitNulls= false
+            }
+            val jsonString = json.encodeToString(listPersonas.map { it.toPersonaDto() })
+            file.writeText(jsonString)
+            Ok(Unit)
+        } catch (e: Exception) {
+            logger.error { "Error al escribir: ${e.message}" }
             Err(PersonaError.FileError("Error al escribir"))
         }
     }
+
 }

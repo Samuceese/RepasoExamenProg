@@ -11,6 +11,8 @@ interface PersonasService {
     fun save(persona: Persona): Result<Persona,PersonaError>
     fun update(id: Int,persona: Persona): Result<Persona,PersonaError>
     fun deleteById(id: Int): Result<Persona,PersonaError>
-    fun load(file: File): Result<List<Persona>, PersonaError>
-    fun store(file: File, listPersonas: List<Persona>) : Result<Unit, PersonaError>
+    fun loadJson(file: File): Result<List<Persona>, PersonaError>
+    fun storeJson(file: File, listPersonas: List<Persona>) : Result<Unit, PersonaError>
+    fun loadCsv(file: File): Result<List<Persona>, PersonaError>
+    fun storeCsv(file: File, listPersonas: List<Persona>) : Result<Unit, PersonaError>
 }
