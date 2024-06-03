@@ -70,4 +70,9 @@ class PersonaRepositoryImpl(
         return persona
     }
 
+    override fun tenistaMasRango(): Tenista {
+        logger.debug { "Obteniendo el tenista con mas rango" }
+        return db.obtenerTenistaConMasRango().executeAsOne().toTenista()
+    }
+
 }

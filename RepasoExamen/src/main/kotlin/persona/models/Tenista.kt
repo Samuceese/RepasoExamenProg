@@ -18,4 +18,9 @@ class Tenista(
     override fun jugarPartidos() {
         println("El tenista $nombre está jugando un partido")
     }
+
+    override fun toString(): String {
+        return "Tenista(id=${id},nombre=${nombre},fechaNacimiento=${fechaNacimiento},pais=${pais}ranking=$ranking, ganancias=$ganancias)"
+    }
+
 }

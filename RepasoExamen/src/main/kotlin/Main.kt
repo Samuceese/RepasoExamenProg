@@ -6,8 +6,6 @@ import org.koin.core.component.inject
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.fileProperties
 import persona.services.PersonasService
-import persona.services.PersonasServiceImpl
-import java.io.File
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -31,7 +29,7 @@ class AtpApp : KoinComponent {
         val filePersonasCsv = Path("src","main","resources","personas.csv").toFile()
 
 
-        val listaPersonasCsv = service.loadCsv(filePersonasCsv).mapBoth(
+        service.loadCsv(filePersonasCsv).mapBoth(
             success = {
                 Files.createDirectories(Path("data"))
 
@@ -54,5 +52,8 @@ class AtpApp : KoinComponent {
                 println("$it")
             }
         )
+
+        println(service.obtenerTenistaConMasRango())
+
     }
 }

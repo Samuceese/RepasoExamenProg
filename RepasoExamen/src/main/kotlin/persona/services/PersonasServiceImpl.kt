@@ -5,6 +5,7 @@ import com.github.michaelbull.result.*
 import org.lighthousegames.logging.logging
 import persona.errors.PersonaError
 import persona.models.Persona
+import persona.models.Tenista
 import persona.repositories.PersonaRepository
 import persona.storage.StorageCsv
 import persona.storage.StorageJson
@@ -83,6 +84,11 @@ class PersonasServiceImpl(
     override fun storeCsv(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
         logger.debug { "Salvando en csv" }
         return storageCsv.store(file, listPersonas)
+    }
+
+    override fun obtenerTenistaConMasRango(): Tenista {
+        logger.debug { "Obteniendo tenista con mas rango" }
+        return repository.tenistaMasRango()
     }
 
 
