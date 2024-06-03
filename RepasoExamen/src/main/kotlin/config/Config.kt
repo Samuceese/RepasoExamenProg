@@ -43,7 +43,7 @@ object Config {
         readProperty("storage.fileCsv") ?: "data.csv"
     }
 
-    val caceSize: Int by lazy {
+    val cacheSize: Int by lazy {
         readProperty("cace.size")?.toInt() ?: 5
     }
 

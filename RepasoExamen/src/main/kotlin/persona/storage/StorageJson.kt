@@ -27,7 +27,7 @@ class StorageJson : Storage {
         }
     }
 
-    override fun save(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
+    override fun store(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
         logger.debug { "Guardando el fichero: $file" }
         return try {
             val json = Json {

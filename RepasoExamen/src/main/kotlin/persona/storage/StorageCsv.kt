@@ -50,7 +50,7 @@ class StorageCsv : Storage {
     }
 
 
-    override fun save(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
+    override fun store(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
         logger.debug { "Cargando el fichero ${listPersonas.size}" }
         return try {
             file.appendText("id,nombre,fechaNacimiento,pais,ranking,ganancias\n")

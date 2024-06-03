@@ -62,10 +62,9 @@ class PersonaRepositoryImpl(
 
         val persona = getById(id)
         if (persona == null) return null
-
         when(persona){
-            is Tenista -> db.deleteById(id.toLong())
-            is Entrenador -> db.deleteById(id.toLong())
+            is Tenista -> db.deleteByIdEntrenador(id.toLong())
+            is Entrenador -> db.deleteByIdTenista(id.toLong())
         }
 
         return persona

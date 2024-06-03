@@ -8,6 +8,6 @@ import java.io.File
 interface Storage {
 
     fun load(file: File): Result<List<Persona>, PersonaError>
-    fun save(file: File, listPersonas: List<Persona>) : Result<Unit, PersonaError>
+    fun store(file: File, listPersonas: List<Persona>) : Result<Unit, PersonaError>
 
 }

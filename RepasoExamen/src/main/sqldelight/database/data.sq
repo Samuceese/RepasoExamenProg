@@ -8,6 +8,9 @@ CREATE TABLE EntrenadorEntity(
 deleteAllEntrenador:
 DELETE FROM EntrenadorEntity;
 
+deleteByIdEntrenador:
+DELETE FROM EntrenadorEntity WHERE id = ?;
+
 selectAllEntrenador:
 SELECT * FROM EntrenadorEntity;
 
@@ -48,7 +51,7 @@ SELECT * FROM TenistaEntity WHERE id = ?;
 updateTenista:
 UPDATE TenistaEntity SET nombre=?, fechaNacimiento=? ,pais=?, ranking=?, ganancias=? WHERE id=?;
 
-deleteById:
+deleteByIdTenista:
 DELETE FROM TenistaEntity WHERE id =?;
 
 selectByRanking:
