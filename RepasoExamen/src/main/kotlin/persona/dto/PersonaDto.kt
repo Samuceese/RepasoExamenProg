@@ -9,6 +9,6 @@ data class PersonaDto(
     val nombre : String,
     val fechaNacimiento : String,
     val pais : String,
-    var ranking: String?,
-    var ganancias: String?
+    var ranking: String?=null,
+    var ganancias: String? = null
 )

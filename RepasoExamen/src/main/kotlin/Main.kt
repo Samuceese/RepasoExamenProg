@@ -28,9 +28,10 @@ class AtpApp : KoinComponent {
     fun run() {
         val service: PersonasService by inject()
 
-        val filePersonas = Path("src","main","resources","personas.csv").toFile()
+        val filePersonasCsv = Path("src","main","resources","personas.csv").toFile()
 
-        val listaPersonas = service.loadCsv(filePersonas).mapBoth(
+
+        val listaPersonasCsv = service.loadCsv(filePersonasCsv).mapBoth(
             success = {
                 Files.createDirectories(Path("data"))
 
@@ -41,8 +42,17 @@ class AtpApp : KoinComponent {
                 println("$it")
             }
         )
+        val filePersonasJson = Path("data","personas.json").toFile()
+        service.loadJson(filePersonasJson).mapBoth(
+            success = {
+                Files.createDirectories(Path("data"))
 
-
-
+                val fileJson = Path("data","personas.csv").toFile()
+                service.storeCsv(fileJson,it)
+            }
+            , failure = {
+                println("$it")
+            }
+        )
     }
 }

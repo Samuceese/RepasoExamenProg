@@ -53,11 +53,11 @@ class StorageCsv : Storage {
     override fun store(file: File, listPersonas: List<Persona>): Result<Unit, PersonaError> {
         logger.debug { "Cargando el fichero ${listPersonas.size}" }
         return try {
-            file.appendText("id,nombre,fechaNacimiento,pais,ranking,ganancias\n")
+            file.appendText("id,tipo,nombre,fechaNacimiento,pais,ranking,ganancias\n")
             listPersonas.forEach{
                 when(it){
-                    is Tenista -> file.appendText("${it.id},${it.nombre},${it.fechaNacimiento},${it.pais},${it.ranking},${it.ganancias}\n")
-                    is Entrenador -> file.appendText("${it.id},${it.nombre},${it.fechaNacimiento},${it.pais},,\n")
+                    is Tenista -> file.appendText("${it.id},tenista,${it.nombre},${it.fechaNacimiento},${it.pais},${it.ranking},${it.ganancias}\n")
+                    is Entrenador -> file.appendText("${it.id},entrenador,${it.nombre},${it.fechaNacimiento},${it.pais},,\n")
                 }
             }
             Ok(Unit)

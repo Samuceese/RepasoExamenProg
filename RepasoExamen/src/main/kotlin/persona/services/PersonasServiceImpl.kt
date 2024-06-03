@@ -61,7 +61,7 @@ class PersonasServiceImpl(
         logger.debug { "Cargando fichero $file" }
         return storageJson.load(file)
             .onSuccess {
-                it.forEach { repository.save(it) }
+                //it.forEach { repository.save(it) }
                 Ok(it)
             }
     }
